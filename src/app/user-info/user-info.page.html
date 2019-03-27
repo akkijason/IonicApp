@@ -1,0 +1,54 @@
+<ion-header>
+    <ion-toolbar>
+        <!-- <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons> -->
+        <ion-buttons slot="end">
+            <ion-button (click)="commonService.logOut()">Logout</ion-button>
+        </ion-buttons>
+        <ion-title>user-info</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-card>
+        <ion-card-content>
+            <form [formGroup]="visitorForm" novalidate>
+                <ion-item>
+                    <ion-label position="floating">Name</ion-label>
+                    <ion-input type="text" formControlName="name"></ion-input>
+                </ion-item>
+                <div *ngIf="f.name.errors && formSubmitted" class="validation-errors">
+                    <div *ngIf="f.name.errors.required" class="error-message">Required</div>
+                </div>
+                <ion-item>
+                    <ion-label position="floating">Company Name</ion-label>
+                    <ion-input type="text" formControlName="companyName"></ion-input>
+                </ion-item>
+                <div *ngIf="f.companyName.errors && formSubmitted" class="validation-errors">
+                    <div *ngIf="f.companyName.errors.required" class="error-message">Required</div>
+                </div>
+                <ion-item>
+                    <ion-label position="floating">Mobile Number</ion-label>
+                    <ion-input formControlName="mobile" maxlength="10" (keypress)="commonService.checkNumber($event.target.value)"></ion-input>
+                </ion-item>
+                <div *ngIf="f.mobile.errors && formSubmitted" class="validation-errors">
+                    <div *ngIf="f.mobile.errors.required" class="error-message">Required</div>
+                    <div *ngIf="!f.mobile.errors.required && f.mobile.errors.minlength" class="error-message">Mobile number must be of 10 digit</div>
+                </div>
+                <ion-item>
+                    <ion-label position="floating">Visitor Type</ion-label>
+                    <ion-select formControlName="visitorType">
+                        <ion-select-option [value]="item.visTypeCode" *ngFor="let item of visitorTypes">{{item.visTypeName}}</ion-select-option>
+                    </ion-select>
+                </ion-item>
+                <div *ngIf="f.visitorType.errors && formSubmitted" class="validation-errors">
+                    <div *ngIf="f.visitorType.errors.required" class="error-message">Required</div>
+                </div>
+            </form>
+
+            <ion-button expand="full" (click)="saveDetails()">Next</ion-button>
+        </ion-card-content>
+    </ion-card>
+
+</ion-content>

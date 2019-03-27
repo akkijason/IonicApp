@@ -1,0 +1,32 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button (click)="commonService.logOut()">Logout</ion-button>
+        </ion-buttons>
+        <ion-title>host-info</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-searchbar placeholder="Search Host" debounce="500" showCancelButton (ionChange)="applySearch($event.target.value)"></ion-searchbar>
+
+    <ion-list>
+        <ion-item *ngFor="let item of hostData; let i = index" [class.highlight]="item.selected">
+            <ion-label>{{item['empName']}} - {{item['designation']}}</ion-label>
+            <ion-checkbox slot="start" [(ngModel)]="item.selected" (ngModelChange)="updateSelection(i, item)"></ion-checkbox>
+        </ion-item>
+    </ion-list>
+
+    <ion-item>
+        <ion-label position="floating">Purpose</ion-label>
+        <ion-select [(ngModel)]="selectedPurpose">
+            <ion-select-option [value]="item" *ngFor="let item of purpose">{{item.purposeName}}</ion-select-option>
+        </ion-select>
+    </ion-item>
+
+    <ion-button expand="full" (click)="goToNext()">Next</ion-button>
+
+</ion-content>

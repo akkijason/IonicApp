@@ -1,0 +1,14 @@
+.welcome-text-div {
+    position: relative;
+    height: 80%;
+}
+
+.welcome-text-p {
+    margin: 0;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 100%;
+}

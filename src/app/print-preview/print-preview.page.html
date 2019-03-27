@@ -1,0 +1,38 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="end">
+            <ion-button (click)="commonService.logOut()">Logout</ion-button>
+        </ion-buttons>
+        <ion-title>print-preview</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-card>
+        <ion-card-content>
+            <div class="user-img">
+                <ion-img [src]="printData['imgData']"></ion-img>
+            </div>
+
+            <div class="user-info">
+                <ion-label color="dark">Visitor Name:</ion-label>
+                <ion-label class="label-value">{{printData['userData']['name']}}</ion-label>
+            </div>
+            <div class="user-info">
+                <ion-label color="dark">Company Name:</ion-label>
+                <ion-label class="label-value">{{printData['userData']['companyName']}}</ion-label>
+            </div>
+            <div class="user-info">
+                <ion-label color="dark">Mobile Number:</ion-label>
+                <ion-label class="label-value">{{printData['userData']['mobile']}}</ion-label>
+            </div>
+            <div class="user-info">
+                <ion-label color="dark">Host Name:</ion-label>
+                <ion-label class="label-value">{{printData['hostData']['empName']}}</ion-label>
+            </div>
+            <ion-button expand="full" (click)="print()">Print</ion-button>
+        </ion-card-content>
+    </ion-card>
+
+
+</ion-content>

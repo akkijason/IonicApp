@@ -1,0 +1,21 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="end">
+            <ion-button (click)="commonService.logOut()">Logout</ion-button>
+        </ion-buttons>
+        <ion-title>welcome</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<!-- <ion-header>
+    <app-header [header_data]="header_data"></app-header>
+</ion-header> -->
+
+<ion-content padding>
+    <div class="welcome-text-div">
+        <p class="welcome-text-p">{{welcomeMessage || 'Welcome'}}</p>
+    </div>
+
+    <ion-button expand="full" (click)="checkin()">Check IN</ion-button>
+    <!-- <ion-button expand="full" (click)="openToast()">Toast</ion-button> -->
+</ion-content>

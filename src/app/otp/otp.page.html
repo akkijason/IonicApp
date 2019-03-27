@@ -1,0 +1,26 @@
+<ion-header>
+    <ion-toolbar>
+        <!-- <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons> -->
+        <ion-buttons slot="end">
+            <ion-button (click)="commonService.logOut()">Logout</ion-button>
+        </ion-buttons>
+        <ion-title>Get OTP</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-card>
+        <ion-card-content>
+            <ion-item>
+                <ion-label position="floating">Phone Number</ion-label>
+                <ion-input name="phone" [(ngModel)]="phoneNumber" (ngModelChange)="phoneNumberChanged($event)" maxlength="10" (keypress)="commonService.checkNumber($event.target.value)"></ion-input>
+            </ion-item>
+            <div *ngIf="isInvalid && formSubmitted" class="validation-errors">
+                <div class="error-message">{{invalidText}}</div>
+            </div>
+            <ion-button expand="full" (click)="getOtp()">Send OTP</ion-button>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

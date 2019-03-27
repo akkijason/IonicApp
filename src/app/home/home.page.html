@@ -1,0 +1,60 @@
+<ion-header>
+    <ion-toolbar>
+        <!-- <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons> -->
+        <ion-title>
+            Corporate Login
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-card>
+        <ion-card-content>
+            <form [formGroup]="loginForm" novalidate>
+                <ion-item>
+                    <ion-label position="floating">Company Code</ion-label>
+                    <ion-input type="text" formControlName="companyCode" maxlength="4" (input)="companyCodeChanged($event.target.value)"></ion-input>
+                </ion-item>
+                <div *ngIf="f.companyCode.errors && formSubmitted" class="validation-errors">
+                    <div *ngIf="f.companyCode.errors.required" class="error-message">Required</div>
+                    <div *ngIf="!f.companyCode.errors.required && (f.companyCode.errors?.maxlength || f.companyCode.errors?.minlength)" class="error-message">Company code length must be 4</div>
+                </div>
+                <!-- <div *ngIf="f.companyCode.errors && formSubmitted" class="validation-errors">
+                    <div *ngIf="f.companyCode.errors.required" class="error-message">Required</div>
+                </div> -->
+
+                <ion-item>
+                    <ion-label position="floating">Location</ion-label>
+                    <ion-select formControlName="locationCode">
+                        <ion-select-option [value]="item.locCode" *ngFor="let item of locationCodes">{{item.locName}}</ion-select-option>
+                        <!-- <ion-select-option value="m">US</ion-select-option> -->
+                    </ion-select>
+                </ion-item>
+                <div *ngIf="f.locationCode.errors && formSubmitted" class="validation-errors">
+                    <div *ngIf="f.locationCode.errors.required" class="error-message">Required</div>
+                </div>
+
+                <ion-item>
+                    <ion-label position="floating">Username</ion-label>
+                    <ion-input type="text" formControlName="userName"></ion-input>
+                </ion-item>
+                <div *ngIf="f.userName.errors && formSubmitted" class="validation-errors">
+                    <div *ngIf="f.userName.errors.required" class="error-message">Required</div>
+                </div>
+
+                <ion-item>
+                    <ion-label position="floating">Password</ion-label>
+                    <ion-input type="password" formControlName="password"></ion-input>
+                </ion-item>
+                <div *ngIf="f.password.errors && formSubmitted" class="validation-errors">
+                    <div *ngIf="f.password.errors.required" class="error-message">Required</div>
+                </div>
+
+                <ion-button expand="full" (click)="login()">Login</ion-button>
+
+            </form>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

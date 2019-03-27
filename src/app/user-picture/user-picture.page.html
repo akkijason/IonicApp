@@ -1,0 +1,25 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>user-picture</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="commonService.logOut()">Logout</ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-card>
+        <ion-card-content>
+            <ion-img [src]="imageURI"></ion-img>
+            <ion-button expand="full" (click)="takePic()">Take Picture</ion-button>
+            <ion-button *ngIf="enableNext" expand="full" (click)="next()">Next</ion-button>
+        </ion-card-content>
+    </ion-card>
+    <!-- <ion-item>
+        <ion-thumbnail slot="start">
+            <ion-img [src]="imageURI"></ion-img>            
+        </ion-thumbnail>       
+    </ion-item> -->
+    <!-- <ion-button expand="full" (click)="takePic()">Take Picture</ion-button>
+    <ion-button *ngIf="enableNext" expand="full" (click)="next()">Next</ion-button> -->
+</ion-content>

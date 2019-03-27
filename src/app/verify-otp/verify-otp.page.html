@@ -1,0 +1,28 @@
+<ion-header>
+    <ion-toolbar>
+        <!-- <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons> -->
+        <ion-buttons slot="end">
+            <ion-button (click)="commonService.logOut()">Logout</ion-button>
+        </ion-buttons>
+        <ion-title>Verify/Resend OTP</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-card>
+        <ion-card-content>
+            <ion-item>
+                <ion-label position="floating">OTP</ion-label>
+                <ion-input type="text" [(ngModel)]="enteredOtp"></ion-input>
+            </ion-item>
+            <div *ngIf="isInvalid" class="validation-errors">
+                <div class="error-message">{{invalidText}}</div>
+            </div>
+            <ion-button expand="full" (click)="verifyOtp()">Verify OTP</ion-button>
+            <ion-label [hidden]="enableResend">You can resend the otp in {{timer}} seconds</ion-label>
+            <ion-button expand="full" (click)="redendOtp()" [disabled]="!enableResend">Resend OTP</ion-button>
+        </ion-card-content>
+    </ion-card>
+</ion-content>
